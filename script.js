@@ -13,11 +13,11 @@ const iniciarOuPausarBtIcone = document.querySelector(
 );
 const tempoNaTela = document.querySelector("#timer");
 
-const musica = new Audio("./sons/luna-rise-part-one.mp3");
+const musica = new Audio("sons/luna-rise-part-one.mp3");
 musica.loop = true;
-const audioPlay = new Audio("/sons/play.wav");
-const audioPausa = new Audio("/sons/pause.mp3");
-const audioTempoFinalizado = new Audio("./sons/beep.mp3");
+const audioPlay = new Audio("sons/play.wav");
+const audioPausa = new Audio("sons/pause.mp3");
+const audioTempoFinalizado = new Audio("sons/beep.mp3");
 
 let tempoDecorridoEmSegundos = 1500;
 let intervaloId = null;
@@ -50,26 +50,24 @@ longoBt.addEventListener("click", () => {
 
 function alterarContexto(contexto) {
   mostrarTempo();
-  botoes.forEach(function (contexto) {
-    contexto.classList.remove("active");
+
+  botoes.forEach((botao) => {
+    botao.classList.remove("active");
   });
+
   html.setAttribute("data-contexto", contexto);
   banner.setAttribute("src", `imagens/${contexto}.png`);
+
   switch (contexto) {
     case "foco":
-      titulo.innerHTML = `Otimize sua produtividade,<br>
-                <strong class="app__title-strong">mergulhe no que importa.</strong>
-                `;
+      titulo.innerHTML = `Otimize sua produtividade,<br>mergulhe no que importa.`;
       break;
     case "descanso-curto":
-      titulo.innerHTML = `Que tal dar uma respirada?<br>
-                <strong class="app__title-strong">Hora do descanso curto!</strong>
-                `;
+      titulo.innerHTML = `Que tal dar uma respirada?<br>Hora do descanso curto!`;
       break;
     case "descanso-longo":
-      titulo.innerHTML = `Hora de voltar à superficie!<br>
-                <strong class="app__title-strong">Aproveite seu descanso longo.</strong>
-                `;
+      titulo.innerHTML = `Hora de voltar à superfície!<br>Aproveite seu descanso longo.`;
+      break;
     default:
       break;
   }
@@ -82,6 +80,7 @@ const contagemRegressiva = () => {
     zerar();
     return;
   }
+
   tempoDecorridoEmSegundos -= 1;
   mostrarTempo();
 };
@@ -94,8 +93,10 @@ function iniciarOuPausar() {
     zerar();
     return;
   }
+
   audioPlay.play();
   intervaloId = setInterval(contagemRegressiva, 1000);
+
   iniciarOuPausarBt.textContent = "Pausar";
   iniciarOuPausarBtIcone.src = "imagens/pause.png";
 }
@@ -113,7 +114,8 @@ function mostrarTempo() {
     minute: "2-digit",
     second: "2-digit",
   });
-  tempoNaTela.innerHTML = `${tempoFormatado}`;
+
+  tempoNaTela.textContent = tempoFormatado;
 }
 
 mostrarTempo();
