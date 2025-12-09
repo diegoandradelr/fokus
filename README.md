@@ -24,3 +24,12 @@ CSS3
 JavaScript (manipulação do DOM e controle do temporizador)
 
 Git e GitHub para versionamento
+
+Link do projeto online
+
+https://diegoandradelr.github.io/fokus/
+
+Créditos
+
+Projeto desenvolvido a partir do curso "JavaScript: manipulando elementos no DOM", da Alura.
+O projeto é fictício e não possui fins comerciais.
